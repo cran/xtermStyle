@@ -1,0 +1,10 @@
+Encoding: latin1
+Package: xtermStyle
+Type: Package
+Title: Basic text formatting using xterm escape sequences
+Version: 2.1-2
+Date: 2010-01-03
+Author: Christofer Backlin
+Maintainer: Christofer Backlin <christofer.backlin@medsci.uu.se>
+Description: Text formatting in xterm and ansi terminals using escape sequences.
+Supports colors and various font styles. It began as a standalone version of the
