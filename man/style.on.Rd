@@ -12,7 +12,7 @@
 
 }
 \seealso{\code{\link{style.mode}}, \code{\link{style}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \examples{cat(style.auto(123456), "\n")
 style.off()
 cat(style.auto(123456), "\n")

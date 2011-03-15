@@ -19,7 +19,7 @@ you would like to change or disable coloured output entirely see
 \value{A string containing formatting escape sequences.}
 \seealso{\code{\link{style.auto}}, \code{\link{style.dim}},
 \code{\link{display.xterm.colors}}, \code{\link{styled.error}}, \code{\link{styled.warning}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{string}{A string to add formatting to.}
 \item{\dots}{Formatting arguments sent to \code{\link{style.set}}.}
 }

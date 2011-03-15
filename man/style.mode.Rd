@@ -14,7 +14,7 @@ Supported modes are \code{xterm-256color}, \code{ansi}, \code{off}.}
 nothing.}
 \seealso{\code{\link{style.default.mode}}, \code{\link{style.on}},
 \code{\link{style.off}}, \code{\link{style}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{x}{New style mode, case insensive character scalar.}
 }
 \examples{style.mode()

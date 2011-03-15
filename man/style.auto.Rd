@@ -13,7 +13,7 @@ There are two color schemes adapted for either light text on dark background
 scheme use the command \code{options(color.scheme = "dark on light")}.}
 \value{A formatted string.}
 \seealso{\code{\link{style.auto.demo}}, \code{\link{style}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{obj}{Object to decide formatting from.}
 \item{string}{String to be formatted. Optional, default: \code{print(obj)}.}
 \item{fg}{Specify to overwrite automatic foreground color.}

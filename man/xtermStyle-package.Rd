@@ -6,8 +6,8 @@
 \details{\tabular{ll}{
 Package: \tab xtermStyle\cr
 Type: \tab Package\cr
-Version: \tab 2.1-3\cr
-Date: \tab 2010-01-06\cr
+Version: \tab 2.1-7\cr
+Date: \tab 2010-03-15\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
@@ -25,7 +25,7 @@ be used independently they were released separately.}
 \alias{xtermStyle}
 \alias{xtermstyle}
 \docType{package}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \references{\url{http://christofer.backlin.se/R/}}
 \keyword{xterm}
 \keyword{ansi}

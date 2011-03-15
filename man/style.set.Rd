@@ -20,7 +20,7 @@ e.g. all package internal calls).
 
 
 }
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \seealso{\code{\link{style}}}
 \arguments{\item{fg}{Foreground color i.e. color of the text. Can be any number in
 [0, 255] or a string such as \code{"grey"} or \code{"dark red"} (for the

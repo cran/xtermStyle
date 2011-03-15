@@ -12,7 +12,7 @@
 ##' @return Logical telling if variable is blank.
 ##' @examples
 ##' is.blank(NULL)
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @nord
 is.blank <- function(x, false.triggers=FALSE){
     return(

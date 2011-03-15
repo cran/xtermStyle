@@ -13,7 +13,7 @@
 ##' display.xterm.colors()
 ##' display.xterm.colors(numbers=FALSE, perm=c(2,1,3))
 ##' @seealso \code{\link{style}}
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 display.xterm.colors <- function(numbers=TRUE, perm=1:3) {
     ## 16 ANSI colours
@@ -79,7 +79,7 @@ display.xterm.colors <- function(numbers=TRUE, perm=1:3) {
 ##'     cat(style(fruits[i], fg=pal$Accent[fruits[i]]), "\n")
 ##'
 ##' @seealso \code{\link{display.xterm.pal}}, \code{\link{display.xterm.colors}}
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 xterm.pal <- function(pal){
     if(missing(pal)) pal <- "all"
@@ -165,8 +165,76 @@ xterm.pal <- function(pal){
             pals$GnRd <- c(seq(46,226,36), seq(220,196,-6))
         if("long" == p || pal == "all")
             pals$long <- c(18:20, seq(21,51,by=6), seq(87,195,by=36), 231:226, seq(220,196,by=-6), seq(160,88,by=-36))
+        if("downup" == p || pal == "all")
+            pals$DownUp <- c(seq(51, 21, by=-6), 20:16, seq(52, 196, by=36), seq(202, 226, by=6))
+        if("bupuyl" == p || pal == "all")
+            pals$BuPuYl <- c(seq(87, 57, by=-6), 56:53, seq(89, 197, by=36), seq(203, 227, by=6))
+        if("jet" == p || pal == "all")
+            pals$jet <- c(17:21, 27,33,39,45, 51:46, 82,118,154,190,226, 220,214,208,202, 196:201, 207,213,219,225,231)
     }
     return(pals)
+}
+
+##' Get the inverse, reverse or both of a palette
+##'
+##' Most color brewer palettes are designed for a white background. With these
+##' functions you can easily adapt them for a dark background instead.
+##'
+##' @param pal Palette. Either vector of color indices or a string specifying a
+##'   predefined palette.
+##' @return The inverse of the palette
+##' @examples
+##' xterm.pal.inv("Set1")
+##' xterm.pal.rev("Set2")
+##' xterm.pal.revinv("Set3")
+##' @author Christofer \enc{Bäcklin}{Backlin}
+##' @seealso \code{\link{xterm.pal}}
+##' @export
+xterm.pal.inv <- function(pal){
+    if(is.character(pal)) pal <- xterm.pal(pal)
+    list.out <- is.list(pal)
+    if(!list.out) pal <- list(pal)
+    for(i in 1:length(pal)){
+        p <- pal[[i]]
+        new.r <- 5 - floor((p-16)/36)
+        new.g <- 5 - floor((p-16) %% 36 / 6)
+        new.b <- 5 - (p-16) %% 6
+        new.ansi <- 15 - p
+        new.grey <- 255 - p + 232
+        pal[[i]][p > 15 & p < 232] <- (new.r * 36 + new.g * 6 + new.b + 16)[p > 15 & p < 232]
+        pal[[i]][p < 16] <- new.ansi[p < 16]
+        pal[[i]][p > 231] <- new.grey[p > 231]
+    }
+    if(!list.out) pal <- pal[[1]]
+    return(pal)
+}
+##' Get the inverse, reverse or both of a palette
+##'
+##' @param pal Palette. Either vector of color indices or a string specifying a
+##'   predefined palette.
+##' @return The reverse of the palette
+##' @author Christofer \enc{Bäcklin}{Backlin}
+##' @rdname xterm.pal.inv
+##' @export
+xterm.pal.rev <- function(pal){
+    if(is.character(pal)) pal <- xterm.pal(pal)
+    if(is.list(pal)){
+        for(i in 1:length(pal)) pal[[i]] <- rev(pal[[i]])
+    } else {
+        pal <- rev(pal)
+    }    
+    return(pal)
+}
+##' Get the inverse, reverse or both of a palette
+##'
+##' @param pal Palette. Either vector of color indices or a string specifying a
+##'   predefined palette.
+##' @return The reversed inverse of the palette
+##' @author Christofer \enc{Bäcklin}{Backlin}
+##' @rdname xterm.pal.inv
+##' @export
+xterm.pal.revinv <- function(pal){
+    return(xterm.pal.rev(xterm.pal.inv(pal)))
 }
 
 ##' Get predefined colour palettes
@@ -174,35 +242,37 @@ xterm.pal <- function(pal){
 ##' @param pal Palette name(s). Leave blank for all.
 ##' @param numbers Whether to show colour indices.
 ##' @return Nothing
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @rdname xterm.pal
 ##' @export
 display.xterm.pal <- function(pal, numbers=FALSE){
-    pals <- xterm.pal(pal)
-    if(is.blank(pals)) stop("No palettes found.")
-    nc <- max(nchar(names(pals)))
+    if(missing(pal) || is.blank(pal)) pal <- xterm.pal()
+    if(is.character(pal)) pal <- xterm.pal(pal)
+    if(!is.list(pal)) pal <- list(` `=pal)
+
+    nc <- max(nchar(names(pal)))
     cat("\n")
-    for(i in 1:length(pals)){
-        cat(sprintf(sprintf("%%%is: ", nc), names(pals)[i]))
+    for(i in 1:length(pal)){
+        cat(sprintf(sprintf("%%%is: ", nc), names(pal)[i]))
         pos <- nc + 2
         terminal.width <- if(is.blank(Sys.getenv("COLUMNS"))) 80 else as.integer(Sys.getenv("COLUMNS"))
         cols.per.line <- floor((terminal.width - nc - 2) / 4)
-        n.lines <- ceiling(length(pals[[i]]) / cols.per.line)
-        cols.per.line <- ceiling(length(pals[[i]]) / n.lines)
-        for(j in 1:length(pals[[i]])){
-            cat(sprintf("%s%4s", style.set(bg=pals[[i]][j]), if(numbers) as.character(pals[[i]][j]) else ""))
+        n.lines <- ceiling(length(pal[[i]]) / cols.per.line)
+        cols.per.line <- ceiling(length(pal[[i]]) / n.lines)
+        for(j in 1:length(pal[[i]])){
+            cat(sprintf("%s%4s", style.set(bg=pal[[i]][j]), if(numbers) as.character(pal[[i]][j]) else ""))
             if(j %% cols.per.line == 0){
                 cat(sprintf(sprintf("%s\n%%%is", style.clear(), nc+2), ""))
                 pos <- nc + 2;
             }
         }
-        cat("%s\n", style.clear())
+        cat(sprintf("%s\n", style.clear()))
     }
 }
 ##' Get all predefined colour palettes
 ##'
 ##' @return Nothing
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @rdname xterm.pal
 ##' @export
 display.xterm.all <- function() display.xterm.pal()
@@ -226,19 +296,16 @@ display.xterm.all <- function() display.xterm.pal()
 ##' for(q in error.rates)
 ##'   cat(style(q, fg=discrete.color(q, c(0, .5), "GnRd")), "\n")
 ##' @seealso \code{\link{xterm.pal}}
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
-discrete.color <- function(x, range, pal=""){
-    if(is.character(pal)) col <- xterm.pal(pal)[[1]]
-    n.col <- length(col)
-    cuts <- seq(range[1], range[2], length=length(col)+1)
-    segs <- cbind(cuts[-length(cuts)], cuts[-1])
-    segs[1,1] <- Inf*(segs[1,1]-segs[2,1])
-    segs[n.col,2] <- Inf*(segs[n.col,2]-segs[n.col-1,2])
-    return(col[
-        apply(segs, 1, function(cc){
-            sum(cc <= x) == sum(x < cc)
-        })
-    ])
+discrete.color <- function(x, range=c(min(x), max(x)), pal="GnRd"){
+    if(is.character(pal)) pal <- xterm.pal(pal)[[1]]
+    n.pal <- length(pal)
+    cuts <- seq(range[1], range[2], length=n.pal+1)
+    col <- floor((n.pal+1)*(x - range[1])/(range[2] - range[1])) + 1
+    col[col < 1] <- 1
+    col[col > n.pal] <- n.pal
+    col[1:length(col)] <- pal[col]
+    return(col)
 }
 

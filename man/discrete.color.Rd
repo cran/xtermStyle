@@ -1,7 +1,7 @@
 \name{discrete.color}
 \alias{discrete.color}
 \title{Map numbers onto a palette...}
-\usage{discrete.color(x, range, pal="")
+\usage{discrete.color(x, range=c(min(x), max(x)), pal="GnRd")
 }
 \description{Map numbers onto a palette}
 \details{The continuous interval defined by \code{range} is divided into bins of
@@ -12,7 +12,7 @@ bins.}
 \value{Colour indices from \code{pal} corresponding to where in the range
 the values in \code{x} are.}
 \seealso{\code{\link{xterm.pal}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{x}{Continuous numbers.}
 \item{range}{The interval in \code{x} that will be mapped to the palette.}
 \item{pal}{Palette. Can be the name of a predefined palette, as returned by

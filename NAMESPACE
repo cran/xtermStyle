@@ -1,5 +1,8 @@
 export(display.xterm.colors)
 export(xterm.pal)
+export(xterm.pal.inv)
+export(xterm.pal.rev)
+export(xterm.pal.revinv)
 export(display.xterm.pal)
 export(display.xterm.all)
 export(discrete.color)

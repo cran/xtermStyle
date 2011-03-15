@@ -6,7 +6,7 @@
 \description{Error display function with colored message.}
 \value{Nothing}
 \seealso{\code{\link{styled.warning}}, \code{\link{style}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{e}{Error object}
 }
 \examples{tryCatch({

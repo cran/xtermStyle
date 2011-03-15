@@ -4,6 +4,6 @@
 \description{Demonstration of automatic styles.}
 \value{Nothing}
 \seealso{\code{\link{style.auto}}, \code{\link{style}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \examples{style.auto.demo()}
 

@@ -19,7 +19,7 @@ display.xterm.pal(pal, numbers=FALSE)
 
 }
 \seealso{\code{\link{display.xterm.pal}}, \code{\link{display.xterm.colors}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{pal}{Palette name(s). Leave blank for all.}
 \item{numbers}{Whether to show colour indices.}
 }

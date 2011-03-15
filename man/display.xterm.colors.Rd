@@ -10,7 +10,7 @@ black (16). However these are not strictly defined but can vary somewhat
 between systems and configurations.}
 \value{Nothing}
 \seealso{\code{\link{style}}}
-\author{Christofer Bäcklin}
+\author{Christofer \enc{Bäcklin}{Backlin}}
 \arguments{\item{numbers}{Whether to display colour indices.}
 \item{perm}{Rotation of the colour cube, supplied as a permutation of its
 dimensions. Sent to \code{\link[base]{aperm}}.}

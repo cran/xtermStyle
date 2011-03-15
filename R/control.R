@@ -10,14 +10,14 @@
 ##' style.on()
 ##' cat(style.auto(123456), "\n")
 ##' @seealso \code{\link{style.mode}}, \code{\link{style}}
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.on <- function() style.mode(style.default.mode())
 
 ##' Turn style off.
 ##'
 ##' @return Nothing
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @rdname style.on
 ##' @export
 style.off <- function() style.mode("off")
@@ -43,7 +43,7 @@ style.off <- function() style.mode("off")
 ##'     cat(style("All code and no colour make HAL dull calculator!", fg=11), "\n")
 ##' }
 ##' @seealso \code{\link{style.mode}}, \code{\link{style}}
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.default.mode <- function(){
     sn <- tolower(Sys.info()["sysname"])
@@ -75,7 +75,7 @@ style.default.mode <- function(){
 ##' style.mode(style.default.mode())
 ##' @seealso \code{\link{style.default.mode}}, \code{\link{style.on}},
 ##'   \code{\link{style.off}}, \code{\link{style}}
-##' @author Christofer Bäcklin
+##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.mode <- function(x){
     if(missing(x)){
