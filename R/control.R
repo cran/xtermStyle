@@ -48,7 +48,7 @@ style.off <- function() style.mode("off")
 style.default.mode <- function(){
     sn <- tolower(Sys.info()["sysname"])
     term <- tolower(Sys.getenv("TERM"))
-    if(sn == "darwin" || term == "ansi"){
+    if(term %in% c("ansi", "apple_terminal")){
         return("ansi")
     } else if(sn == "windows" || is.blank(term)) {
         return("off")

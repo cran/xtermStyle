@@ -1,4 +1,4 @@
-##' Displays the xterm 256 color table.
+##' Display color table.
 ##'
 ##' The xterm colour table consist of the ANSI colours (16), the web
 ##' colour cube (216) and additional shades of grey not including full white and
@@ -56,6 +56,26 @@ display.xterm.colors <- function(numbers=TRUE, perm=1:3) {
                         if(numbers) as.character(232 + i * 12 + j) else ""))
         cat(sprintf("%s\n", style.clear(make.default=FALSE)))
     }
+}
+##' Display color table.
+##'
+##' @param numbers Whether to display colour indices.
+##' @return Nothing
+##' @author Christofer \enc{Bäcklin}{Backlin}
+##' @rdname display.xterm.colors
+##' @export
+display.ansi.colors <- function(numbers=TRUE){
+    ## 16 ANSI colours
+    for(i in 0:1) {
+        for(j in 0:7)
+            cat(sprintf("%s%4s",
+                        style.set(fg = 8 * as.numeric(i == 0 & j == 0),
+                                  bg = i * 8 + j,
+                                  make.default=FALSE),
+                        if(numbers) as.character(i * 8 + j) else ""))
+        cat(sprintf("%s\n", style.clear(make.default=FALSE)))
+    }
+    cat("\n")
 }
 
 

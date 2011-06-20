@@ -156,6 +156,7 @@ style.set <- function(fg = NULL, bg = NULL, font.style = NULL,
 ##' @rdname style.set 
 ##' @export
 style.get <- function() {
+    if(style.mode() == "off") return("")
     if(is.blank(options()$current.style)) {
         return(style.clear())
     } else {
@@ -175,6 +176,7 @@ style.get <- function() {
 ##' @rdname style.set
 ##' @export
 style.clear <- function(make.default=TRUE){
+    if(style.mode() == "off") return("")
     esc.seq <- "\033[0m"
     if(make.default) options(current.style=esc.seq)
     return(esc.seq)
