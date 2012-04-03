@@ -1,22 +1,35 @@
 \name{style.on}
+\alias{style.off}
 \alias{style.on}
 \title{Globally turn coloured output on or off.}
-\description{Globally turn coloured output on or off.}
-\details{\code{style.on}: Wrappers for \code{\link{style.mode}}.
+\usage{
+  style.on()
 
+  style.off()
 }
-\value{\code{style.on}: Nothing
+\value{
+  Nothing
 
-\code{style.off}: Nothing
-
-
+  Nothing
 }
-\seealso{\code{\link{style.mode}}, \code{\link{style}}}
-\author{Christofer \enc{Bäcklin}{Backlin}}
-\examples{cat(style.auto(123456), "\n")
+\description{
+  Wrappers for \code{\link{style.mode}}.
+
+  Turn style off.
+}
+\examples{
+cat(style.auto(123456), "\\n")
 style.off()
-cat(style.auto(123456), "\n")
+cat(style.auto(123456), "\\n")
 style.on()
-cat(style.auto(123456), "\n")}
-\alias{style.off}
+cat(style.auto(123456), "\\n")
+}
+\author{
+  Christofer \enc{Bäcklin}{Backlin}
+
+  Christofer \enc{Bäcklin}{Backlin}
+}
+\seealso{
+  style.mode, style
+}
 

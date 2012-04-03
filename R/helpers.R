@@ -13,7 +13,7 @@
 ##' @examples
 ##' is.blank(NULL)
 ##' @author Christofer \enc{Bäcklin}{Backlin}
-##' @nord
+##' @noRd
 is.blank <- function(x, false.triggers=FALSE){
     return(
         is.null(x) ||

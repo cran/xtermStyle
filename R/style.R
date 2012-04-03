@@ -1,9 +1,7 @@
-##' @include helpers.R
-{}
-##' @include control.R
-{}
-##' @include colors.R
-{}
+# @include helpers.R
+# @include control.R
+# @include colors.R
+#{}
 
 ##' Adds formatting to a string.
 ##'
@@ -38,8 +36,8 @@
 ##' cat(style())
 ##' cat("Back to normal.\n")
 ##'
-##' @seealso \code{\link{style.auto}}, \code{\link{style.dim}},
-##'   \code{\link{display.xterm.colors}}, \code{\link{styled.error}}, \code{\link{styled.warning}}
+##' @seealso style.auto, style.dim, display.xterm.colors,
+##'   styled.error, styled.warning
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style <- function(string=NULL, ...) {
@@ -83,7 +81,7 @@ style <- function(string=NULL, ...) {
 ##'   command or any display function like \code{\link[dataview]{entry.view}}.
 ##' @return Formatting escape sequences.
 ##' @author Christofer \enc{Bäcklin}{Backlin}
-##' @seealso \code{\link{style}}
+##' @seealso style
 ##' @export
 style.set <- function(fg = NULL, bg = NULL, font.style = NULL,
                       make.default = TRUE) {
@@ -167,9 +165,6 @@ style.get <- function() {
 
 ##' Clear current style to terminal default.
 ##'
-##' @param make.default If \code{TRUE} (default) this style will be the one
-##'   reverted to after temporary changes in style e.g. with the \code{style}
-##'   command or any display function like \code{\link[dataview]{entry.view}}.
 ##' @return Formatting escape sequence for reseting style to default,
 ##'   \code{\\033[0m}.
 ##' @author Christofer \enc{Bäcklin}{Backlin}
@@ -183,8 +178,6 @@ style.clear <- function(make.default=TRUE){
 }
 
 
-
-
 #' Shortcut for a neutral style.
 #'
 #' Useful for text that should not draw too much attention, e.g. the object
@@ -195,7 +188,7 @@ style.clear <- function(make.default=TRUE){
 #' @examples
 #' MyVariable <- 1:6
 #' cat(style.dim("MyVariable:"), style.auto(MyVariable), "\n")
-#' @seealso \code{\link{style}}
+#' @seealso style
 #' @author Christofer \enc{Bäcklin}{Backlin}
 #' @export
 style.dim <- function(...) style(..., fg = 249)
@@ -209,7 +202,8 @@ style.dim <- function(...) style(..., fg = 249)
 #'
 #' There are two color schemes adapted for either light text on dark background
 #' (default) or dark text on light background. To switch to the dark on light
-#' scheme use the command \code{options(color.scheme = "dark on light")}.
+#' scheme use the function \code{\link{style.light}}, to switch back use
+#' \code{\link{style.dark}}.
 #'
 #' @param obj Object to decide formatting from.
 #' @param string String to be formatted. Optional, default: \code{print(obj)}.
@@ -220,13 +214,14 @@ style.dim <- function(...) style(..., fg = 249)
 #' @examples
 #' MyVariable <- 1:6
 #' cat(style.dim("MyVariable:"), style.auto(MyVariable), "\n")
-#' @seealso \code{\link{style.auto.demo}}, \code{\link{style}}
+#' @seealso style.auto.demo, style.light, style
 #' @author Christofer \enc{Bäcklin}{Backlin}
 #' @export
 style.auto <- function(obj, string, fg=NULL, bg=NULL, ...){
     if(missing(string)) string <- obj
 
     opts <- getOption("color.scheme")
+    m <- 1 + (style.mode() == "ansi")
 
     if(!is.null(opts) && opts == "dark on light") {
         if(missing(fg)){
@@ -272,7 +267,7 @@ style.auto <- function(obj, string, fg=NULL, bg=NULL, ...){
 ##' @return Nothing
 ##' @examples
 ##' style.auto.demo()
-##' @seealso \code{\link{style.auto}}, \code{\link{style}}
+##' @seealso style.auto, style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.auto.demo <- function() {
@@ -310,7 +305,7 @@ style.auto.demo <- function() {
 ##' tryCatch({
 ##'     stop("Louisiana law is gonna get you Amos!")
 ##' }, error = styled.error)
-##' @seealso \code{\link{styled.warning}}, \code{\link{style}}
+##' @seealso styled.warning, style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 styled.error <- function(e) {
@@ -328,7 +323,7 @@ styled.error <- function(e) {
 ##' tryCatch({
 ##'     warning("Do you feel lucky, little boy?")
 ##' }, warning = styled.warning)
-##' @seealso \code{\link{styled.error}}, \code{\link{style}}
+##' @seealso styled.error, style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 styled.warning <- function(w) {

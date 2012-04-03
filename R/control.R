@@ -9,7 +9,7 @@
 ##' cat(style.auto(123456), "\n")
 ##' style.on()
 ##' cat(style.auto(123456), "\n")
-##' @seealso \code{\link{style.mode}}, \code{\link{style}}
+##' @seealso style.mode, style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.on <- function() style.mode(style.default.mode())
@@ -42,7 +42,7 @@ style.off <- function() style.mode("off")
 ##' } else {
 ##'     cat(style("All code and no colour make HAL dull calculator!", fg=11), "\n")
 ##' }
-##' @seealso \code{\link{style.mode}}, \code{\link{style}}
+##' @seealso style.mode, style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.default.mode <- function(){
@@ -73,8 +73,7 @@ style.default.mode <- function(){
 ##' style.mode()
 ##' style.mode("off")
 ##' style.mode(style.default.mode())
-##' @seealso \code{\link{style.default.mode}}, \code{\link{style.on}},
-##'   \code{\link{style.off}}, \code{\link{style}}
+##' @seealso style.default.mode, style.on, style.off, style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 style.mode <- function(x){
@@ -91,5 +90,27 @@ style.mode <- function(x){
             options(style.mode=x)
         }
     }
+}
+
+
+##' Change color theme
+##'
+##' Light is designed for light backgrounds and dark for dark backgrounds.
+##' This function merely sets a global option (\code{color.scheme}).
+##' 
+##' @return Nothing
+##' @examples
+##' style.light()
+##' style.dark()
+##' @seealso style.auto
+##' @author Christofer \enc{Bäcklin}{Backlin}
+##' @export
+style.light <- function(){
+    options(color.scheme="dark on light")
+}
+##' @rdname style.light
+##' @export
+style.dark <- function(){
+    options(color.scheme=NULL)
 }
 

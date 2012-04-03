@@ -3,8 +3,8 @@
 ##' \tabular{ll}{
 ##' Package: \tab xtermStyle\cr
 ##' Type: \tab Package\cr
-##' Version: \tab 2.2-1\cr
-##' Date: \tab 2010-06-20\cr
+##' Version: \tab 2.2-4\cr
+##' Date: \tab 2012-04-03\cr
 ##' License: \tab GPL (>= 2)\cr
 ##' LazyLoad: \tab yes\cr
 ##' }
@@ -12,7 +12,7 @@
 ##' Text formatting in xterm and ansi terminals using escape sequences.
 ##' Supports colors and various font styles. It began as a standalone
 ##' version of the \sQuote{xterm256} package by Romain Francois since that
-##' package is tangled up with the syntax highlighting package \sQuote{highlight}
+##' package is interwoven with the syntax highlighting package \sQuote{highlight}
 ##' but has been developed in another direction since then.
 ##'
 ##' For some more sophisticated examples of this package functionality check out
@@ -27,7 +27,7 @@
 ##' @references
 ##' \url{http://christofer.backlin.se/R/}
 ##' @keywords xterm ansi color font
-##' @seealso \code{\link{style}}, \code{\link{style.mode}}, \code{\link{display.xterm.colors}}
+##' @seealso style, style.mode, display.xterm.colors
 ##' @examples
 ##' cat(style("Howdy", fg = "red", bg = "dark blue",
 ##'     font.style = c("bold", "underline")), "\n")

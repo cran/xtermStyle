@@ -1,9 +1,22 @@
 \name{style.auto.demo}
 \alias{style.auto.demo}
 \title{Demonstration of automatic styles.}
-\description{Demonstration of automatic styles.}
-\value{Nothing}
-\seealso{\code{\link{style.auto}}, \code{\link{style}}}
-\author{Christofer \enc{Bäcklin}{Backlin}}
-\examples{style.auto.demo()}
+\usage{
+  style.auto.demo()
+}
+\value{
+  Nothing
+}
+\description{
+  Demonstration of automatic styles.
+}
+\examples{
+style.auto.demo()
+}
+\author{
+  Christofer \enc{Bäcklin}{Backlin}
+}
+\seealso{
+  style.auto, style
+}
 

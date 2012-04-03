@@ -5,14 +5,14 @@
 ##' black (16). However these are not strictly defined but can vary somewhat
 ##' between systems and configurations.
 ##'
-##' @param numbers Whether to display colour indices.
+##' @param numbers Logical, whether to display colour indices.
 ##' @param perm Rotation of the colour cube, supplied as a permutation of its
 ##'   dimensions. Sent to \code{\link[base]{aperm}}.
 ##' @return Nothing
 ##' @examples
 ##' display.xterm.colors()
 ##' display.xterm.colors(numbers=FALSE, perm=c(2,1,3))
-##' @seealso \code{\link{style}}
+##' @seealso style
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 display.xterm.colors <- function(numbers=TRUE, perm=1:3) {
@@ -59,7 +59,6 @@ display.xterm.colors <- function(numbers=TRUE, perm=1:3) {
 }
 ##' Display color table.
 ##'
-##' @param numbers Whether to display colour indices.
 ##' @return Nothing
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @rdname display.xterm.colors
@@ -98,7 +97,7 @@ display.ansi.colors <- function(numbers=TRUE){
 ##' for(i in 1:length(fruits))
 ##'     cat(style(fruits[i], fg=pal$Accent[fruits[i]]), "\n")
 ##'
-##' @seealso \code{\link{display.xterm.pal}}, \code{\link{display.xterm.colors}}
+##' @seealso display.xterm.pal, display.xterm.colors
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 xterm.pal <- function(pal){
@@ -208,7 +207,7 @@ xterm.pal <- function(pal){
 ##' xterm.pal.rev("Set2")
 ##' xterm.pal.revinv("Set3")
 ##' @author Christofer \enc{Bäcklin}{Backlin}
-##' @seealso \code{\link{xterm.pal}}
+##' @seealso xterm.pal
 ##' @export
 xterm.pal.inv <- function(pal){
     if(is.character(pal)) pal <- xterm.pal(pal)
@@ -230,8 +229,6 @@ xterm.pal.inv <- function(pal){
 }
 ##' Get the inverse, reverse or both of a palette
 ##'
-##' @param pal Palette. Either vector of color indices or a string specifying a
-##'   predefined palette.
 ##' @return The reverse of the palette
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @rdname xterm.pal.inv
@@ -247,8 +244,6 @@ xterm.pal.rev <- function(pal){
 }
 ##' Get the inverse, reverse or both of a palette
 ##'
-##' @param pal Palette. Either vector of color indices or a string specifying a
-##'   predefined palette.
 ##' @return The reversed inverse of the palette
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @rdname xterm.pal.inv
@@ -262,8 +257,9 @@ xterm.pal.revinv <- function(pal){
 ##' @param pal Palette name(s). Leave blank for all.
 ##' @param numbers Whether to show colour indices.
 ##' @return Nothing
+##' @examples
+##' display.xterm.pal("BuPu")
 ##' @author Christofer \enc{Bäcklin}{Backlin}
-##' @rdname xterm.pal
 ##' @export
 display.xterm.pal <- function(pal, numbers=FALSE){
     if(missing(pal) || is.blank(pal)) pal <- xterm.pal()
@@ -315,7 +311,7 @@ display.xterm.all <- function() display.xterm.pal()
 ##' error.rates <- .6*runif(10)
 ##' for(q in error.rates)
 ##'   cat(style(q, fg=discrete.color(q, c(0, .5), "GnRd")), "\n")
-##' @seealso \code{\link{xterm.pal}}
+##' @seealso xterm.pal
 ##' @author Christofer \enc{Bäcklin}{Backlin}
 ##' @export
 discrete.color <- function(x, range=c(min(x), max(x)), pal="GnRd"){
