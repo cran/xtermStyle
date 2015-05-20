@@ -1,25 +1,22 @@
 Encoding: UTF-8
 Package: xtermStyle
 Type: Package
-Title: Basic text formatting using xterm escape sequences
-Version: 2.2-4
-Date: 2012-04-03
-Author: Christofer Backlin
+Title: Terminal Text Formatting Using Escape Sequences
+Version: 3.0.5
+Date: 2015-05-20
+Authors@R: person("Christofer", "Backlin", role = c("aut", "cre"), email = "christofer.backlin@medsci.uu.se")
+Author: Christofer Backlin [aut, cre]
 Maintainer: Christofer Backlin <christofer.backlin@medsci.uu.se>
-Description: Text formatting in xterm and ansi terminals using escape
-        sequences.  Supports colors and various font styles. It began
-        as a standalone version of the 'xterm256' package by Romain
-        Francois since that package is interwoven with the syntax
-        highlighting package 'highlight' but has been developed in
-        another direction since then.  For some more sophisticated
-        examples of this package functionality check out the 'dataview'
-        package as that was the very reason 'xtermStyle' came into
-        existence. However as 'xtermStyle' can be used independently
-        they were released separately.
+Description: Can be used for coloring output in terminals.
+	It was developed for the standard Ubuntu terminal but should be compatible
+	with any terminal using xterm or ANSI escape sequences. If run in windows,
+	RStudio, or any other platform not supporting such escape sequences it
+	gracefully passes on any output without modifying it.
 License: GPL (>= 2)
 LazyLoad: yes
-Collate: 'colors.R' 'control.R' 'helpers.R' 'style.R'
-        'xtermStyle-package.R'
-Packaged: 2012-07-19 15:07:35 UTC; christofer
+URL: https://github.com/backlin/xtermStyle
+BugReports: https://github.com/backlin/xtermStyle/issues
+NeedsCompilation: no
+Packaged: 2015-05-20 14:53:11 UTC; christofer
 Repository: CRAN
-Date/Publication: 2012-07-19 15:43:54
+Date/Publication: 2015-05-21 00:34:27
